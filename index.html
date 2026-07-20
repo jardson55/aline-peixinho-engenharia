@@ -9,6 +9,15 @@
     gtag('js', new Date());
     gtag('config', 'G-5R4TC6M74W');
   </script>
+  <!-- Rastreamento de cliques no WhatsApp (evento: contato_whatsapp) -->
+  <script>
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+      if (link && typeof gtag === 'function') {
+        gtag('event', 'contato_whatsapp', { link_url: link.href });
+      }
+    }, true);
+  </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aline Peixinho Engenharia — Perícias e Avaliações Imobiliárias | Embu das Artes, SP</title>
