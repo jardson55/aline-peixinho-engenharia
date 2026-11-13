@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5R4TC6M74W"></script>
+  <!-- Google Analytics 4: so e carregado apos consentimento do visitante (LGPD). Padrao: negado. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-5R4TC6M74W');
+    window['ga-disable-G-5R4TC6M74W'] = true;
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
   </script>
   <!-- Rastreamento de cliques no WhatsApp (evento: contato_whatsapp) -->
   <script>
     document.addEventListener('click', function(e){
       var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
-      if (link && typeof gtag === 'function') {
+      if (link && typeof gtag === 'function' && window.__apConsent) {
         gtag('event', 'contato_whatsapp', { link_url: link.href });
       }
     }, true);
@@ -729,6 +728,7 @@
       <span class="txt"><b class="brandfont" style="font-family:'Cinzel',serif">ALINE PEIXINHO</b><span style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt)">Engenharia</span></span>
     </a>
     <span>CREA/SP 5063805340 · Embu das Artes — SP</span>
+    <span class="ap-legal"><a href="privacidade.html">Privacidade</a> · <button type="button" id="ap-prefs">Preferências de cookies</button></span>
     <div class="social">
       <a href="https://www.instagram.com/alinepeixinho1" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.5 2.6 9.9 2.6 12s0 2.5.1 3.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.7s0-2.5-.1-3.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8a3.1 3.1 0 100-6.2 3.1 3.1 0 000 6.2zm6.3-8.2a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
       <a href="https://www.linkedin.com/in/aline-peixinho" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 5a1.94 1.94 0 11-3.88 0 1.94 1.94 0 013.88 0zM3.4 8.5h3.06V21H3.4zM9.2 8.5h2.94v1.7h.04c.41-.78 1.42-1.6 2.92-1.6 3.12 0 3.7 2.05 3.7 4.72V21h-3.05v-5.55c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92V21H9.2z"/></svg></a>
@@ -822,6 +822,52 @@
     const ho=new IntersectionObserver((ent)=>{ent.forEach(e=>{waFloat.classList.toggle('show', !e.isIntersecting);});},{threshold:.15});
     ho.observe(hero);
   }else{ waFloat.classList.add('show'); }
+</script>
+<style>
+#ap-consent{position:fixed;left:18px;bottom:18px;z-index:90;max-width:520px;background:var(--navy-2);color:#E7EBF4;border:1px solid var(--gold);border-radius:14px;padding:18px 20px;box-shadow:0 18px 40px -10px rgba(0,0,0,.6);font:14px/1.5 Archivo,system-ui,sans-serif}
+#ap-consent[hidden]{display:none}
+#ap-consent p{margin:0 0 12px}
+#ap-consent a{color:var(--gold-lt);text-decoration:underline}
+#ap-consent .ap-btns{display:flex;gap:10px;flex-wrap:wrap}
+#ap-consent button{cursor:pointer;border-radius:999px;padding:10px 18px;min-height:44px;font:600 14px Archivo,system-ui,sans-serif;border:1px solid var(--gold)}
+#ap-consent .ap-ok{background:var(--gold);color:var(--navy)}
+#ap-consent .ap-no{background:transparent;color:#E7EBF4}
+.ap-legal{font-size:13px}
+.ap-legal a,.ap-legal button{color:var(--muted);background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+@media(max-width:600px){#ap-consent{left:10px;right:10px;bottom:10px;max-width:none}}
+</style>
+<div id="ap-consent" role="region" aria-label="Aviso de privacidade" hidden>
+  <p>Usamos o Google Analytics somente para medir, de forma agregada, como o site é usado e melhorá-lo. Ele só é ativado se você aceitar, e você pode mudar de ideia quando quiser. Veja a <a href="privacidade.html">Política de Privacidade</a>.</p>
+  <div class="ap-btns"><button type="button" class="ap-ok">Aceitar</button><button type="button" class="ap-no">Recusar</button></div>
+</div>
+<script>
+(function(){
+  var ID='G-5R4TC6M74W',KEY='ap_analytics_consent_v1',DUR=180*24*60*60*1000,loaded=false;
+  var box=document.getElementById('ap-consent');
+  function read(){try{var v=JSON.parse(localStorage.getItem(KEY)||'null');return v&&(v.escolha==='aceito'||v.escolha==='recusado')&&isFinite(v.em)&&Date.now()-v.em<=DUR?v.escolha:null;}catch(_){return null;}}
+  function save(c){try{localStorage.setItem(KEY,JSON.stringify({escolha:c,em:Date.now()}));}catch(_){}}
+  function clearGa(){try{var hs=['',location.hostname,'.'+location.hostname.replace(/^www\./,'')];document.cookie.split(';').forEach(function(c){var n=c.split('=')[0].trim();if(n==='_ga'||n.indexOf('_ga_')===0){hs.forEach(function(d){document.cookie=n+'=; Max-Age=0; Path=/; SameSite=Lax'+(d?'; Domain='+d:'');});}});}catch(_){}}
+  function activate(){
+    window['ga-disable-'+ID]=false;window.__apConsent=true;
+    gtag('consent','update',{analytics_storage:'granted'});
+    if(loaded)return;loaded=true;
+    gtag('js',new Date());
+    gtag('config',ID,{page_location:location.origin+location.pathname,allow_google_signals:false,allow_ad_personalization_signals:false,cookie_flags:'SameSite=Lax;Secure'});
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);
+  }
+  function choose(c){
+    save(c);
+    if(c==='aceito'){activate();}
+    else{window.__apConsent=false;window['ga-disable-'+ID]=true;if(loaded)gtag('consent','update',{analytics_storage:'denied'});clearGa();}
+    box.hidden=true;
+  }
+  var cur=read();
+  if(cur==='aceito')activate();else if(cur===null)box.hidden=false;
+  box.querySelector('.ap-ok').addEventListener('click',function(){choose('aceito');});
+  box.querySelector('.ap-no').addEventListener('click',function(){choose('recusado');});
+  var pref=document.getElementById('ap-prefs');
+  if(pref)pref.addEventListener('click',function(){box.hidden=false;box.querySelector('.ap-ok').focus();});
+})();
 </script>
 </body>
 </html>
