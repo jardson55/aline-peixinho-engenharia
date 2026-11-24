@@ -146,7 +146,7 @@ footer a{color:var(--gold-lt)}
   var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href*="wa.me"]');
-    if(a)gtag('event','contato_whatsapp',{link_url:a.href});
+    if(a)gtag('event','whatsapp_click',{link_url:a.href});
     var b=e.target.closest('a[href*="blogdoconcreto.com"]');
     if(b)gtag('event','clique_blog_do_concreto',{link_url:b.href});
   },true);

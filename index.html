@@ -8,12 +8,12 @@
     window['ga-disable-G-5R4TC6M74W'] = true;
     gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
   </script>
-  <!-- Rastreamento de cliques no WhatsApp (evento: contato_whatsapp) -->
+  <!-- Rastreamento de cliques no WhatsApp (evento: whatsapp_click) -->
   <script>
     document.addEventListener('click', function(e){
       var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
       if (link && typeof gtag === 'function' && window.__apConsent) {
-        gtag('event', 'contato_whatsapp', { link_url: link.href });
+        gtag('event', 'whatsapp_click', { link_url: link.href });
       }
     }, true);
   </script>
